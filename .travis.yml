@@ -30,7 +30,6 @@ deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY # Travis repo setting에서 설정된 값
     secret_access_key: $AWS_SECRET_KEY # Travis repo setting에서 설정된 값
-
     bucket: hree-springboot-build # S3 버킷
     region: ap-northeast-2
     skip_cleanup: true
@@ -41,14 +40,11 @@ deploy:
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY # Travis repo setting에서 설정된 값
     secret_access_key: $AWS_SECRET_KEY # Travis repo setting에서 설정된 값
-
     bucket: hree-springboot-build # S3 버킷
     key: hree-webservice.zip # 빌드 파일을 압축해서 전달
-
     bundle_type: zip # 압축 확장자
     application: hree-webservice # 웹 콘솔에서 등록한 CodeDeploy
     deployment_group: hree-webservice-group # 웹 콘솔에서 등록한 CodeDeploy 배포 그룹
-
     region: ap-northeast-2
     wait-until-deployed: true
 
